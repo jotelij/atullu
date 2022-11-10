@@ -1,0 +1,70 @@
+reports:
+  exclude_contracts:
+    - SafeMath
+dependencies:
+  - openzeppelin/openzeppelin-contracts@4.7.3
+  - smartcontractkit/chainlink@1.9.0
+  - Uniswap/v3-core@1.0.0
+# automatically fetch contract sources from Etherscan
+autofetch_sources: True
+# Change to trye to verify smart contracts
+verify: False
+compiler:
+  solc:
+    #version: 0.8.17
+    remappings:
+      - "@chainlink=smartcontractkit/chainlink@1.9.0"
+      - "@openzeppelin=openzeppelin/openzeppelin-contracts@4.7.3"
+      - "@uniswap=Uniswap/v3-core@1.0.0"
+dotenv: .env
+networks:
+  default: mainnet-fork
+  #default: ganache-local
+  aurora-main-fork:
+    chain: "aurora"
+    verify: False
+  aurora-local:
+    chain: "aurora"
+    verify: False
+  goerli:
+    chain: "goerli"
+    verify: True
+    weth_token: "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6"
+    dai_token: "0x73967c6a0904aA032C103b4104747E88c566B1A2"
+    uniswap2_token: "0x83651ca969C637D348954a6bc0212635821fA6AC"
+    usdc_token: "0x2f3A40A3db8a7e3D09B0adfEfbCe4f6F81927557"
+    aave_usdc_token: "0xA2025B15a1757311bfD68cb14eaeFCc237AF5b43"
+    uniswapv2_router02: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D"
+    bancor_network: ""
+    sushiswapv2_router02: ""
+  mainnet-fork:
+    verify: False
+    bnt_token: '0x1F573D6Fb3F13d689FF844B4cE37794d79a7FF1C'
+    dai_token: '0x6b175474e89094c44da98b954eedeac495271d0f'
+    weth_token: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+    sushiswapv2_router02: '0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F'
+    uniswapv2_router02: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D'
+    # For mainnet, the link token is the same
+    link_token: '0x514910771af9ca656af840dff83e8264ecf986ca'
+    link_eth_price_feed: '0xDC530D9457755926550b59e8ECcdaE7624181557'
+    dai_eth_price_feed: '0x773616E4d11A78F511299002da57A0a94577F1f4'
+  ganache-local:
+    verify: False
+    swap_router: '0xE592427A0AEce92De3Edee1F18E0157C05861564'
+    lending_pool_addresses_provider: '0xB53C1a33016B2DC2fF3653530bfF1848a515c8c5'
+    weth_token: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+    sushiswapv2_router02: '0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F'
+    uniswapv2_router02: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D'
+    # For mainnet, the link token is the same
+    link_token: '0x514910771af9ca656af840dff83e8264ecf986ca'
+    fee: 100000000000000000
+    aave_link_token: '0x514910771af9ca656af840dff83e8264ecf986ca'
+    aave_dai_token: '0x6b175474e89094c44da98b954eedeac495271d0f'
+    dai_token: '0x6b175474e89094c44da98b954eedeac495271d0f'
+    link_eth_price_feed: '0xDC530D9457755926550b59e8ECcdaE7624181557'
+    dai_eth_price_feed: '0x773616E4d11A78F511299002da57A0a94577F1f4'
+  development:
+    verify: False
+wallets:
+  from_key: ${PRIVATE_KEY}
+  from_mnemonic: ${MNEMONIC}
